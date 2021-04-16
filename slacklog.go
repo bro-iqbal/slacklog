@@ -9,11 +9,12 @@ import (
 )
 
 type SlackRequestBody struct {
-	Text interface{}
+	Req string `json:"text"`
+	Res string `json:"text"`
 }
 
-func SendSlackLog(webHookUrl string, msg interface{}) error {
-	slackBody, _ := json.Marshal(SlackRequestBody{Text: msg})
+func SendSlackLog(webHookUrl string, requ string, resp string) error {
+	slackBody, _ := json.Marshal(SlackRequestBody{Req: requ, Res: resp})
 	req, err := http.NewRequest(http.MethodPost, webHookUrl, bytes.NewBuffer(slackBody))
 
 	if err != nil {
