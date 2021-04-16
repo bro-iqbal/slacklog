@@ -13,8 +13,8 @@ type SlackRequestBody struct {
 	Res string `json:"text"`
 }
 
-func SendSlackLog(webHookUrl string, requ string, resp string) error {
-	slackBody, _ := json.Marshal(SlackRequestBody{Req: requ, Res: resp})
+func SendSlackLog(webHookUrl string, requ string, res string) error {
+	slackBody, _ := json.Marshal(SlackRequestBody{Req: requ, Res: res})
 	req, err := http.NewRequest(http.MethodPost, webHookUrl, bytes.NewBuffer(slackBody))
 
 	if err != nil {
