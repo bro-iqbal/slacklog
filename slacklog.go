@@ -22,7 +22,7 @@ func SendSlackLog(webHookUrl string, msg string) error {
 
 	req.Header.Add("Content-Type", "application/json")
 
-	client := &http.Get{Timeout: 10 * time.Second}
+	client := &http.Client{Timeout: 10 * time.Second}
 	resp, err := client.Do(req)
 
 	if err != nil {
